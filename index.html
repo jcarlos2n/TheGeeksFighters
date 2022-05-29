@@ -25,9 +25,39 @@
                 <img src="img/logo.png" class="img-fluid" alt="...">
             </div>
             <div class="container-lg" id="titulo">The Geeks Fighters</div>
-            <div class="container-sm" id="start" onclick="changeLCD('select')">Press to Start</div>
+            <div class="container-sm" id="start" onclick="changeLCD('selectSingle')">SINGLE PLAYER</div>
+            <div class="container-sm" id="start" onclick="changeLCD('select')">MULTIPLAYER</div>
         </div>
         <!-- SELECCION PERSONAJE -->
+        <!-- SINGLEPLAYER -->
+        <!-- <div class="container-xl" id="selectSingle">
+            <div class="container select">
+                <div class="row">
+                    <div class="row align-self-start">
+                        <div class="container-lg titulo1">The Geeks Fighters</div>
+                    </div>
+                    <div class="row select2">
+                        <div class="row align-self-center">
+                            <div class="container-lg" id="elige">Choose your murderer</div>
+                        </div>
+                        <div class="row align-self-center personajes">
+                            <div class="col" onclick="choose1('1')">
+                                <img src="img/lisa.png" class="img-fluid foto" alt="...">
+                            </div>
+                            <div class="col" onclick="choose1('2')">
+                                <img src="img/ralph.png" class="img-fluid foto" alt="...">
+                            </div>
+                            <div class="col" onclick="choose1('3')">
+                                <img src="img/martin.png" class="img-fluid foto" alt="...">
+                            </div>
+                            <div class="col" onclick="choose1('4')">
+                                <img src="img/milhouse.png" class="img-fluid foto" alt="...">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        <!-- MULTIPLAYER -->
         <div class="container-xl" id="select">
             <div class="container select">
                 <div class="row">
@@ -77,16 +107,16 @@
             <div class="row align-items-center">
                 <div class="col botons">
                     <div class="container-md" id="spaceP1"></div>
-                    <div class="container-md atack" id="atack1" onkeypress="ataque1(a)" onclick="ataque1('a')">Ataque</div>
-                    <div class="container-md atack defense" onclick="defense1()">Defensa</div>
+                    <div class="container-md atack" id="bottonW"  onclick="ataque1('a')">Ataque</div>
+                    <div class="container-md atack defense" id="bottonS" onclick="defense1()">Defensa</div>
                 </div>
                 <div class="col centro">
                   
                 </div>
                 <div class="col botons">
                     <div class="container-md" id="spaceP2"></div>
-                    <div class="container-md atack" onclick="ataque2()">Ataque</div>
-                    <div class="container-md atack defense" onclick="defense2()">Defensa</div>
+                    <div class="container-md atack" id="bottonUp" onclick="ataque2()">Ataque</div>
+                    <div class="container-md atack defense" id="bottonDown" onclick="defense2()">Defensa</div>
                 </div>
               </div>
         </div>

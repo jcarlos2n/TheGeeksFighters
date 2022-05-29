@@ -11,8 +11,7 @@ const changeLCD = (nextLcd) => {
             document.getElementById(i).style.display = "none";
         }
     }
-}
-
+};
 //Seleccionar jugador Multijugador
 let versus1 = document.getElementById("vs1");
 let versus2 = document.getElementById("vs2");
@@ -51,6 +50,9 @@ const choose = (elegido) => {
         }, 1000)
     }
 };
+//SELECCIONAR JUGADOR SINGLE PLAYER
+
+
 //Controles JUGADOR 1
 let contador = 0;
 let contador2 = 0;
@@ -64,7 +66,7 @@ const ataque1 = () => {
         //boton antes de ese tiempo defiendes, si no, recibes el daño.
         setTimeout(() => {
             contador = 0;
-        }, 1000);
+        }, 800);
         if (jugador[1].vida <= 0) {
             console.log("has ganado");
             ganador.innerHTML = `<img src="img/${jugador[0].apodo}.png" class="img-fluid foto3" alt="PLAYER1">`;
@@ -93,7 +95,7 @@ const ataque2 = () => {
         console.log("Lanzaste ataque para dejar a " + jugador[0].nombre + " a " + jugador[0].vida + " de vida.");
         setTimeout(() => {
             contador2 = 0;
-        }, 1000);
+        }, 800);
         if (jugador[0].vida <= 0) {
             console.log("Has ganado" + jugador[0].nombre);
             ganador.innerHTML = `<img src="img/${jugador[1].apodo}.png" class="img-fluid foto3" alt="PLAYER1">`;
@@ -112,4 +114,37 @@ const defense2 = () => {
     } else {
         console.log("No pudiste esquivarlo");
     };
+};
+//CONTROLES POR TECLADO
+//Controles personaje 1
+// const bottonAW = document.getElementById("buttonW");
+const bottonAS = document.getElementById("buttonS");
+//Controles personaje 2
+const bottonArriba = document.getElementById("buttonUp");
+const bottonAbajo = document.getElementById("buttonDown");
+//Le decimos a la maquina que funcion va a ejecutar la presion de la teclas
+document.addEventListener("keydown", move);
+document.getElementById("buttonW").addEventListener("click");
+// bottonAW.addEventListener("click");
+bottonAS.addEventListener("click");
+bottonArriba.addEventListener("click");
+bottonAbajo.addEventListener("click");
+//"e" es la variable por defecto para meter parametros por teclado
+function move(e) {
+    switch (e.key) {
+        case "w":
+        case "W":
+            ataque1();
+            break;
+        case "s":
+        case "S":
+            defense1();
+            break;
+        case "ArrowUp":
+            ataque2();
+            break;
+        case "ArrowDown":
+            defense2();
+            break;
+    }
 };

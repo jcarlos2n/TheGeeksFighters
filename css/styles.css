@@ -27,6 +27,14 @@
     height: 100vh;
     width: 100vh;
 }
+#selectSingle {
+    display: none;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vh;
+}
 
 #versus {
     display: none;
