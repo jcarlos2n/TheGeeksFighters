@@ -4,7 +4,7 @@ const changeLCD = (nextLcd) => {
     let fin = document.getElementById(nextLcd);
     fin.style.display = "flex";
 
-    let arrayLCD = ["home", "select", "versus", "fight", "winner"];
+    let arrayLCD = ["home", "select", "selectSingle", "versus", "fight", "winner"];
 
     for (let i of arrayLCD) {
         if (i != nextLcd) {
@@ -50,7 +50,60 @@ const choose = (elegido) => {
         }, 1000)
     }
 };
-//SELECCIONAR JUGADOR SINGLE PLAYER
+//SELECCIONAR JUGADOR SINGLE PLAYER 
+const choose1 = (elegido) => {
+    switch (elegido) {
+        case "1":
+            jugador.push(players[elegido]);
+            break;
+        case "2":
+            jugador.push(players[elegido]);
+            break;
+        case "3":
+            jugador.push(players[elegido]);
+            break;
+        case "4":
+            jugador.push(players[elegido]);
+            break;
+    };
+    let random = `${Math.floor(Math.random() * (4 - 1) + 1)}`;
+    while (random === elegido) {
+        random = `${Math.floor(Math.random() * (4 - 1) + 1)}`;
+         console.log(random)
+        if (random != elegido) {
+            
+            console.log(jugador);
+        }
+    };
+    if (jugador.length == 1) {
+            jugador.push(players[random]);
+            if (jugador.length == 2) {
+                console.log(jugador);
+                //CAMBIO A PANTALLA DE VERSUS
+                setTimeout(() => {
+                    versus1.innerHTML = `<img src="img/${jugador[0].apodo}.png" class="img-fluid foto3" alt="PLAYER1">`;
+                    versus2.innerHTML = `<img src="img/${jugador[1].apodo}.png" class="img-fluid foto3" alt="PLAYER2">`;
+                    changeLCD("versus");
+                    //CAMBIO DE PANTALLA A PELEA
+                    setTimeout(() => {
+        
+                        pelea1.innerHTML = `<img src="img/${jugador[0].apodo}.png" class="img-fluid foto3" alt="PLAYER1">`;
+                        pelea2.innerHTML = `<img src="img/${jugador[1].apodo}.png" class="img-fluid foto3" alt="PLAYER2">`;
+                        changeLCD("fight");
+                        let a = setInterval(() => {
+                            let randomA =Math.floor(Math.random() * (3 - 1) + 1);
+                                    if (randomA == 2) {
+                                    ataque2();
+                                    };
+                                    if (jugador[0].vida <= 0 || jugador[1].vida <= 0) {
+                                        clearInterval(a);
+                                    }
+                        }, 900);  
+                    }, 1000);
+                }, 1000)
+            }
+    };
+};
 
 
 //Controles JUGADOR 1
@@ -82,7 +135,7 @@ const defense1 = () => {
     if (contador2 == 1) {
         contador2 = 0;
         jugador[0].vida = jugador[0].vida + jugador[1].ataque;
-        console.log("bp " + jugador[0].vida);
+        console.log("Esquivaste el ataque " + jugador[0].vida);
     } else {
         console.log("No pudiste esquivarlo");
     };
@@ -97,7 +150,7 @@ const ataque2 = () => {
             contador2 = 0;
         }, 800);
         if (jugador[0].vida <= 0) {
-            console.log("Has ganado" + jugador[0].nombre);
+            console.log("Has ganado " + jugador[1].nombre);
             ganador.innerHTML = `<img src="img/${jugador[1].apodo}.png" class="img-fluid foto3" alt="PLAYER1">`;
             changeLCD("winner");
         };
@@ -117,15 +170,14 @@ const defense2 = () => {
 };
 //CONTROLES POR TECLADO
 //Controles personaje 1
-// const bottonAW = document.getElementById("buttonW");
+const bottonAW = document.getElementById("buttonW");
 const bottonAS = document.getElementById("buttonS");
 //Controles personaje 2
 const bottonArriba = document.getElementById("buttonUp");
 const bottonAbajo = document.getElementById("buttonDown");
 //Le decimos a la maquina que funcion va a ejecutar la presion de la teclas
 document.addEventListener("keydown", move);
-document.getElementById("buttonW").addEventListener("click");
-// bottonAW.addEventListener("click");
+bottonAW.addEventListener("click");
 bottonAS.addEventListener("click");
 bottonArriba.addEventListener("click");
 bottonAbajo.addEventListener("click");
@@ -148,3 +200,4 @@ function move(e) {
             break;
     }
 };
+    
