@@ -156,7 +156,7 @@ const defense1 = () => {
     if (contador2 == 1) {
         contador2 = 0;
         jugador[0].vida = jugador[0].vida + jugador[1].ataque;
-        pelea1.innerHTML = `<img src="img/${jugador[0].apodo}.gif" class="img-fluid foto6" alt="PLAYER2"><div>Esquivaste</div>`;
+        pelea1.innerHTML = `<img src="img/${jugador[0].apodo}.gif" class="img-fluid foto6" alt="PLAYER2"><div class="esquiva">Esquivaste</div>`;
         console.log("Esquivaste el ataque " + jugador[0].nombre);
         setTimeout(() => {
             pelea1.innerHTML = `<img src="img/${jugador[0].apodo}.gif" class="img-fluid foto3" alt="PLAYER2">`;
@@ -171,10 +171,10 @@ const defense2 = () => {
         defensaIA = 0;
         contador = 0;
         jugador[1].vida = jugador[1].vida + jugador[0].ataque;
-        pelea2.innerHTML = `<img src="img/${jugador[0].apodo}.gif" class="img-fluid foto7" alt="PLAYER2"><div>Esquivaste</div>`;
+        pelea2.innerHTML = `<img src="img/${jugador[1].apodo}.gif" class="img-fluid foto7" alt="PLAYER2"><div class="esquiva">Esquivaste</div>`;
         console.log("Esquivaste el ataque " + jugador[1].nombre);
         setTimeout(() => {
-            pelea2.innerHTML = `<img src="img/${jugador[0].apodo}.gif" class="img-fluid foto3" alt="PLAYER2">`;
+            pelea2.innerHTML = `<img src="img/${jugador[1].apodo}.gif" class="img-fluid foto5" alt="PLAYER2">`;
         }, 200);
     } else {
         console.log("No pudiste esquivarlo");

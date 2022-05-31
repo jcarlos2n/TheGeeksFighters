@@ -54,11 +54,11 @@
     width: 100vh;
 
 }
-.centro {
+/* .centro {
     height: 30em;
     width: 5em;
     background-color: black;
-}
+} */
 .atack {
     font-family: 'Mortal Kombat 4', sans-serif;
     font-size: 2.4em;
@@ -159,7 +159,11 @@
     
 }
 .foto7{
+    transform: scaleX(-1);
     max-width: 20em;
     max-height: 30em;
     margin-left: 10em;
+}
+.esquiva {
+    font-size: 2em;
 }
