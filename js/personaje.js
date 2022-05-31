@@ -5,8 +5,8 @@ class Personaje {
         this.vida = newVida;
         this.ataque = newAtaque;
     }
-    setVida(newVida){
-        this.vida = newVida
+    atack(enemigo){
+        enemigo.vida=enemigo.vida - this.ataque;
     }
 }
 let personaje1 = new Personaje("lisa","Lisa",100, 10);
