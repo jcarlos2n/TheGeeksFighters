@@ -38,19 +38,19 @@ const choose = (elegido) => {
 
         //CAMBIO A PANTALLA DE VERSUS
         setTimeout(() => {
-            versus1.innerHTML = `<img src="img/${jugador[0].apodo}.png" class="img-fluid foto3" alt="PLAYER1">`;
-            versus2.innerHTML = `<img src="img/${jugador[1].apodo}.png" class="img-fluid foto3" alt="PLAYER2">`;
+            versus1.innerHTML = `<img src="img/${jugador[0].apodo}.gif" class="img-fluid foto3" alt="PLAYER1">`;
+            versus2.innerHTML = `<img src="img/${jugador[1].apodo}.gif" class="img-fluid foto5" alt="PLAYER2">`;
             changeLCD("versus");
             //CAMBIO DE PANTALLA A PELEA
             setTimeout(() => {
-                pelea1.innerHTML = `<img src="img/${jugador[0].apodo}.png" class="img-fluid foto3" alt="PLAYER1">`;
-                pelea2.innerHTML = `<img src="img/${jugador[1].apodo}.png" class="img-fluid foto3" alt="PLAYER2">`;
+                pelea1.innerHTML = `<img src="img/${jugador[0].apodo}.gif" class="img-fluid foto3" alt="PLAYER1">`;
+                pelea2.innerHTML = `<img src="img/${jugador[1].apodo}.gif" class="img-fluid foto5" alt="PLAYER2">`;
                 changeLCD("fight");
             }, 1000);
         }, 1000)
     }
 };
-//SELECCIONAR JUGADOR SINGLE PLAYER 
+//SELECCIONAR JUGADOR SINGLE PLAYER
 const choose1 = (elegido) => {
     switch (elegido) {
         case "1":
@@ -81,14 +81,14 @@ const choose1 = (elegido) => {
             console.log(jugador);
             //CAMBIO A PANTALLA DE VERSUS
             setTimeout(() => {
-                versus1.innerHTML = `<img src="img/${jugador[0].apodo}.png" class="img-fluid foto3" alt="PLAYER1">`;
-                versus2.innerHTML = `<img src="img/${jugador[1].apodo}.png" class="img-fluid foto3" alt="PLAYER2">`;
+                versus1.innerHTML = `<img src="img/${jugador[0].apodo}.gif" class="img-fluid foto3" alt="PLAYER1">`;
+                versus2.innerHTML = `<img src="img/${jugador[1].apodo}.gif" class="img-fluid foto5" alt="PLAYER2">`;
                 changeLCD("versus");
                 //CAMBIO DE PANTALLA A PELEA
                 setTimeout(() => {
 
-                    pelea1.innerHTML = `<img src="img/${jugador[0].apodo}.png" class="img-fluid foto3" alt="PLAYER1">`;
-                    pelea2.innerHTML = `<img src="img/${jugador[1].apodo}.png" class="img-fluid foto3" alt="PLAYER2">`;
+                    pelea1.innerHTML = `<img src="img/${jugador[0].apodo}.gif" class="img-fluid foto3" alt="PLAYER1">`;
+                    pelea2.innerHTML = `<img src="img/${jugador[1].apodo}.gif" class="img-fluid foto5" alt="PLAYER2">`;
                     changeLCD("fight");
                     let a = setInterval(() => {
                         let randomA = Math.floor(Math.random() * (3 - 1) + 1);
@@ -107,7 +107,7 @@ const choose1 = (elegido) => {
     };
 };
 
-//Controles JUGADOR 1
+//Controles JUGADORES
 let contador = 0;
 let contador2 = 0;
 let ganador = document.getElementById("ganador1");
@@ -117,16 +117,16 @@ const ataque1 = (atacante) => {
             jugador[0].atack(jugador[1]);
             console.log("Lanzaste ataque para dejar a " + jugador[1].nombre + " a " + jugador[1].vida + " de vida.");
             contador++;
-            
+            pelea1.innerHTML = `<img src="img/${jugador[0].apodo}1.gif" class="img-fluid foto3" alt="PLAYER1">`;
             //Es para la funcion de defensa, hemos incremetado el contador para que cuando termine el timepo vuelva a ser 0, asi si pulsas el
             //boton antes de ese tiempo defiendes, si no, recibes el daño.
             setTimeout(() => {
                 contador = 0;
-
+                pelea1.innerHTML = `<img src="img/${jugador[0].apodo}.gif" class="img-fluid foto3" alt="PLAYER1">`;
             }, 800);
             if (jugador[1].vida <= 0) {
                 console.log("has ganado");
-                ganador.innerHTML = `<img src="img/${jugador[0].apodo}.png" class="img-fluid foto3" alt="PLAYER1">`;
+                ganador.innerHTML = `<img src="img/${jugador[0].apodo}.gif" class="img-fluid foto3" alt="PLAYER1">`;
                 changeLCD("winner");
             };
         } else {
@@ -135,14 +135,16 @@ const ataque1 = (atacante) => {
     } else if (atacante == 2) { //Controles Jugador 2
         if (contador2 == 0) {
             jugador[1].atack(jugador[0]);
+            pelea2.innerHTML = `<img src="img/${jugador[1].apodo}1.gif" class="img-fluid foto5" alt="PLAYER2">`;
             contador2++;
             console.log("Lanzaste ataque para dejar a " + jugador[0].nombre + " a " + jugador[0].vida + " de vida.");
             setTimeout(() => {
                 contador2 = 0;
+                pelea2.innerHTML = `<img src="img/${jugador[1].apodo}.gif" class="img-fluid foto5" alt="PLAYER2">`;
             }, 800);
             if (jugador[0].vida <= 0) {
                 console.log("Has ganado " + jugador[1].nombre);
-                ganador.innerHTML = `<img src="img/${jugador[1].apodo}.png" class="img-fluid foto3" alt="PLAYER1">`;
+                ganador.innerHTML = `<img src="img/${jugador[1].apodo}.gif" class="img-fluid foto5" alt="PLAYER1">`;
                 changeLCD("winner");
             };
         } else {
@@ -154,7 +156,11 @@ const defense1 = () => {
     if (contador2 == 1) {
         contador2 = 0;
         jugador[0].vida = jugador[0].vida + jugador[1].ataque;
+        pelea1.innerHTML = `<img src="img/${jugador[0].apodo}.gif" class="img-fluid foto6" alt="PLAYER2"><div>Esquivaste</div>`;
         console.log("Esquivaste el ataque " + jugador[0].nombre);
+        setTimeout(() => {
+            pelea1.innerHTML = `<img src="img/${jugador[0].apodo}.gif" class="img-fluid foto3" alt="PLAYER2">`;
+        }, 200);
     } else {
         console.log("No pudiste esquivarlo");
     };
@@ -165,7 +171,11 @@ const defense2 = () => {
         defensaIA = 0;
         contador = 0;
         jugador[1].vida = jugador[1].vida + jugador[0].ataque;
+        pelea2.innerHTML = `<img src="img/${jugador[0].apodo}.gif" class="img-fluid foto7" alt="PLAYER2"><div>Esquivaste</div>`;
         console.log("Esquivaste el ataque " + jugador[1].nombre);
+        setTimeout(() => {
+            pelea2.innerHTML = `<img src="img/${jugador[0].apodo}.gif" class="img-fluid foto3" alt="PLAYER2">`;
+        }, 200);
     } else {
         console.log("No pudiste esquivarlo");
         defensaIA = 0;
