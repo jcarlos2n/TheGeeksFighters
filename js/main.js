@@ -12,11 +12,18 @@ const changeLCD = (nextLcd) => {
         }
     }
 };
+const vida = (id,newVida) => {
+    animateprogress(id,newVida)
+};
 //Seleccionar jugador Multijugador
 let versus1 = document.getElementById("vs1");
 let versus2 = document.getElementById("vs2");
 let pelea1 = document.getElementById("spaceP1");
 let pelea2 = document.getElementById("spaceP2");
+let dato1 = document.getElementById("name1");
+let dato2 = document.getElementById("name2");
+let life1 = document.getElementById("barr1");
+let life2 = document.getElementById("barr2");
 let jugador = [];
 const choose = (elegido) => {
     switch (elegido) {
@@ -44,7 +51,11 @@ const choose = (elegido) => {
             //CAMBIO DE PANTALLA A PELEA
             setTimeout(() => {
                 pelea1.innerHTML = `<img src="img/${jugador[0].apodo}.gif" class="img-fluid foto3" alt="PLAYER1">`;
+                dato1.innerHTML=`<p class="nombre">${jugador[0].nombre}</p>`;
+                life1.innerHTML = `<progress id="vida1" max="${jugador[0].maxVida}" value="${jugador[0].vida}" ></progress>`
                 pelea2.innerHTML = `<img src="img/${jugador[1].apodo}.gif" class="img-fluid foto5" alt="PLAYER2">`;
+                dato2.innerHTML = `<p class="nombre">${jugador[1].nombre}</p>`;
+                life2.innerHTML = `<progress id="vida2" max="${jugador[1].maxVida}" value="${jugador[1].vida}" ></progress>`
                 changeLCD("fight");
             }, 1000);
         }, 1000)
@@ -121,8 +132,14 @@ const ataque1 = (atacante) => {
             //Es para la funcion de defensa, hemos incremetado el contador para que cuando termine el timepo vuelva a ser 0, asi si pulsas el
             //boton antes de ese tiempo defiendes, si no, recibes el daño.
             setTimeout(() => {
-                contador = 0;
+                
                 pelea1.innerHTML = `<img src="img/${jugador[0].apodo}.gif" class="img-fluid foto3" alt="PLAYER1">`;
+                if (contador == 1) {
+                    life2.innerHTML = `<progress id="vida2" max="${jugador[1].maxVida}" value="${jugador[1].vida}" ></progress>`
+                    contador = 0;
+                }else{
+                    contador=0;
+                }
             }, 800);
             if (jugador[1].vida <= 0) {
                 console.log("has ganado");
@@ -139,8 +156,13 @@ const ataque1 = (atacante) => {
             contador2++;
             console.log("Lanzaste ataque para dejar a " + jugador[0].nombre + " a " + jugador[0].vida + " de vida.");
             setTimeout(() => {
-                contador2 = 0;
                 pelea2.innerHTML = `<img src="img/${jugador[1].apodo}.gif" class="img-fluid foto5" alt="PLAYER2">`;
+                if (contador2 ==1) {
+                    life1.innerHTML = `<progress id="vida1" max="${jugador[0].maxVida}" value="${jugador[0].vida}" ></progress>`
+                    contador2 = 0;
+                }else{
+                    contador2=0;
+                }
             }, 800);
             if (jugador[0].vida <= 0) {
                 console.log("Has ganado " + jugador[1].nombre);

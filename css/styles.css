@@ -1,9 +1,17 @@
 * {
     font-family: 'Street Fighter', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-image: url("../img/escenario.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: rgb(224, 224, 122);
 }
 
 #principal {
-    background-color: aqua;
     display: flex;
     text-align: center;
     justify-content: center;
@@ -16,25 +24,45 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    width: 100vh;
+    width: 200vh;
+    background-color: grey;
+    color: rgb(224, 224, 122);
+}
+
+#titulo {
+    font-size: 5em;
 }
 
 #select {
     display: none;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    width: 100vh;
+    width: 200vh;
+    background-color: grey;
 }
+
 #selectSingle {
     display: none;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    width: 100vh;
+    width: 200vh;
+    background-color: grey;
 }
+
+.chooseP {
+    height: 17em;
+    width: 80em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
 
 #versus {
     display: none;
@@ -46,30 +74,142 @@
 }
 
 #fight {
+    z-index: 1000;
     display: none;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     width: 100vh;
-
 }
-/* .centro {
-    height: 30em;
-    width: 5em;
-    background-color: black;
-} */
-.atack {
+
+.barras {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: brown;
+    margin-top: -8em;
+    width: 100em;
+    height: 20em;
+}
+
+.barrIzq {
+    width: 45em;
+    height: 10em;
+    background-color: blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cent {
+    width: 12em;
+    height: 10em;
+    background-color: bisque;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-family: 'Mortal Kombat 4', sans-serif;
-    font-size: 2.4em;
-    border: solid black 0.08em;
-    margin: 0.2em;
-    background-color: rgb(143, 138, 138);
-    border-radius: 6em;  
+    font-size: 2em;
+    color: black;
 }
 
-.defense {
-    margin-bottom: -1em;
+.barrDer {
+    width: 45em;
+    height: 10em;
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.barra {
+    width: 38em;
+    height: 1.8em;
+    border: solid black 0.2em;
+    border-radius: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+#vida1{
+        /* Elimino la apariencia por defecto */
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+         
+        /* Quito el borde que aparece en Firefox */
+        border: none;
+     
+        /* Añado mis propios estilos */
+        width: 38.3em;
+        height: 1.8em;
+        overflow:hidden;
+         
+    /*  Estos estilos solo se aplicaran al fondo de la barra en mozilla */
+        background-color:rgb(111, 196, 111);
+        border-radius: 2em;
+}
+#vida2{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    width: 38.3em;
+    height: 1.8em;
+    overflow:hidden;
+    background-color:rgb(111, 196, 111);
+    border-radius: 2em;
+    transform: rotate(180deg);
+}
+.nombre {
+    color: black;
+    font-family: 'Mortal Kombat 4', sans-serif;
+    font-size: 2em;
+}
+
+.fight1 {
+    width: 80em;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.datos {
+    width: 36em;
+    height: 5em;
+    background-color: bisque;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0.5em;
+}
+
+.lifes {
+    height: 2.4em;
+    width: 5em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: goldenrod;
+}
+
+.live {
+    height: 2em;
+    width: 2em;
+    border: solid black 0.2em;
+    border-radius: 2em;
+    background-color: brown;
+}
+
+.centro {
+    width: 4em;
 }
 
 #winner {
@@ -81,31 +221,18 @@
     width: 100vh;
 }
 
-#titulo {
-    font-size: 5em;
-}
-
-.titulo {
+.start {
+    height: 2em;
+    width: 9em;
     font-size: 3em;
-}
-
-#elige {
-    font-size: 2em;
-}
-
-#start {
-    font-size: 2em;
-    padding: 0;
-    margin: 0;
     max-width: 15em;
-    border: double black 0.1em;
+    margin-top: 0.2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: double rgb(224, 224, 122) 0.1em;
     border-radius: 3em;
 
-}
-
-.start {
-    padding: 0;
-    margin: 0;
 }
 
 .select2 {
@@ -114,35 +241,60 @@
     align-items: center;
     justify-content: center;
 }
+
 .personajes {
     margin-top: -20em;
 }
-/* #spaceP1{
-    max-width: 9em;
-    max-height: 9em;
-}
-#spaceP2{
-    max-width: 9em;
-    max-height: 9em; 
-} */
+
 .foto {
     max-width: 12em;
-    max-height:12em;
+    max-height: 16em;
 }
+
 .foto3 {
     max-width: 20em;
     max-height: 30em;
 }
-.titulo1 {
-    font-size: 2em;
-    text-align: start;
+
+.cabecera {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: start;
 }
+
+.titulo1 {
+    font-size: 4em;
+    text-align: start;
+    height: 4em;
+    width: 18em;
+    padding: 0;
+    margin: 0;
+
+}
+
+.titulo2 {
+    width: 30em;
+    height: 16em;
+
+}
+
+.elige {
+    font-size: 3em;
+    height: 3em;
+    width: 50em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .winner1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
 .winner2 {
     font-size: 5em;
 }
@@ -152,18 +304,22 @@
     max-height: 30em;
     transform: scaleX(-1);
 }
-.foto6{
+
+.foto6 {
     max-width: 20em;
     max-height: 30em;
     margin-left: -10em;
-    
+
 }
-.foto7{
+
+.foto7 {
     transform: scaleX(-1);
     max-width: 20em;
     max-height: 30em;
     margin-left: 10em;
 }
+
 .esquiva {
     font-size: 2em;
+    color: brown;
 }
