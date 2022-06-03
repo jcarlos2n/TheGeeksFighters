@@ -142,8 +142,6 @@ body {
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
-         
-        /* Quito el borde que aparece en Firefox */
         border: none;
      
         /* Añado mis propios estilos */
