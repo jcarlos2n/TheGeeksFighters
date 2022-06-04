@@ -5,9 +5,9 @@
 }
 
 body {
-    background-image: url("../img/escenario.jpg");
+    /* background-image: url("../img/escenario.jpg");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; */
     color: rgb(224, 224, 122);
 }
 
@@ -39,11 +39,12 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    width: 200vh;
+    width: 100vw;
     background-color: rgb(0, 0, 0);
     background-image: url("../img/fondo2.gif");
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-repeat: repeat;
+    overflow-x: hidden;
+
 }
 
 #selectSingle {
@@ -52,11 +53,11 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    width: 200vh;
+    width: 100vw;
     background-color: rgb(0, 0, 0);
     background-image: url("../img/fondo2.gif");
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-repeat: repeat;
+    overflow-x: hidden;
 }
 
 .chooseP {
@@ -76,18 +77,39 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    width: 200vh;
+    width: 200vw;
     background-color: black;
 }
 
+#date1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#date2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.dates{
+    font-family: 'Mortal Kombat 4', sans-serif;
+    font-size: 2em;
+}
+
 #fight {
-    z-index: 1000;
     display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-image: url("../img/escenario.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
     height: 100vh;
-    width: 100vh;
+    width: 100vw;
 }
 
 .barras {
@@ -95,7 +117,6 @@ body {
     flex-direction: row;
     align-items: flex-start;
     justify-content: center;
-    /* background-color: brown; */
     margin-top: -8em;
     width: 100em;
     height: 20em;
@@ -104,7 +125,7 @@ body {
 .barrIzq {
     width: 45em;
     height: 10em;
-    
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -126,7 +147,7 @@ body {
 .barrDer {
     width: 45em;
     height: 10em;
-  
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -144,22 +165,22 @@ body {
     justify-content: center;
     padding: 0;
 }
-#vida1{
-        /* Elimino la apariencia por defecto */
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        border: none;
-     
-        /* Añado mis propios estilos */
-        width: 38.3em;
-        height: 1.8em;
-        overflow:hidden;
-         
+
+#vida1 {
+    /* Elimino la apariencia por defecto */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    /* Añado mis propios estilos */
+    width: 38.3em;
+    height: 1.8em;
+    overflow: hidden;
     /*  Estos estilos solo se aplicaran al fondo de la barra en mozilla */
-        background-color:rgb(111, 196, 111);
-        border-radius: 2em;
+    background-color: rgb(111, 196, 111);
+    border-radius: 2em;
 }
+
 .nameBarr {
     max-width: 16em;
     height: 3em;
@@ -168,34 +189,39 @@ body {
     justify-content: space-between;
     align-items: center;
 }
-#vida2{
+
+#vida2 {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     border: none;
     width: 38.3em;
     height: 1.8em;
-    overflow:hidden;
-    background-color:rgb(111, 196, 111);
+    overflow: hidden;
+    background-color: rgb(111, 196, 111);
     border-radius: 2em;
     transform: rotate(180deg);
 }
+
 .nombre {
     background-color: rgba(0, 0, 0, 0.397);
     color: rgb(209, 206, 49);
     font-family: 'Mortal Kombat 4', sans-serif;
     font-size: 3em;
 }
+
 #chargeUlti2 {
     height: 2em;
     width: 2em;
     border-radius: 2em;
 }
+
 #chargeUlti1 {
     height: 2em;
     width: 2em;
     border-radius: 2em;
 }
+
 .chargeUlti {
     height: 2em;
     width: 2em;
@@ -253,6 +279,7 @@ body {
     width: 200vh;
     background-color: black;
 }
+
 #winner1 {
     display: flex;
     flex-direction: row;
@@ -273,9 +300,11 @@ body {
     border-radius: 3em;
 
 }
-#name1{
+
+#name1 {
     margin-right: 2em;
 }
+
 #name2 {
     margin-left: 2em;
 }
