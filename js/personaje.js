@@ -14,10 +14,10 @@ class Personaje {
         enemigo1.vida = enemigo1.vida - this.ulti;
     }
 }
-let personaje1 = new Personaje("ryu","Ryu",250,250, 20, 40);
-let personaje2 = new Personaje("akuma","Akuma",220,220, 25, 45);
-let personaje3 = new Personaje("ken","Ken",350,350, 10,35);
-let personaje4 = new Personaje("scorpion","Scorpion",150,150, 30,55);
+let personaje1 = new Personaje("ryu","Ryu",850,850, 50, 85);
+let personaje2 = new Personaje("akuma","Akuma",780,780, 55, 100);
+let personaje3 = new Personaje("ken","Ken",1000,1000, 30,85);
+let personaje4 = new Personaje("scorpion","Scorpion",650,650, 65,135);
 
 //Diccionario de Jugadores
  let players = {

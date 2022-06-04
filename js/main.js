@@ -1,4 +1,17 @@
 
+let ballUlti1 = document.getElementById("chargeUlti1");
+let ballUlti2 = document.getElementById("chargeUlti2");
+let versus1 = document.getElementById("vs1");
+let versus2 = document.getElementById("vs2");
+let pelea1 = document.getElementById("spaceP1");
+let pelea2 = document.getElementById("spaceP2");
+let dato1 = document.getElementById("name1");
+let dato2 = document.getElementById("name2");
+let life1 = document.getElementById("barr1");
+let life2 = document.getElementById("barr2");
+let ulti1 = 0;
+let ulti2 = 0;
+let jugador = [];
 //Funcion que cambia de pantalla
 const changeLCD = (nextLcd) => {
     let fin = document.getElementById(nextLcd);
@@ -12,21 +25,7 @@ const changeLCD = (nextLcd) => {
         }
     }
 };
-const vida = (id, newVida) => {
-    animateprogress(id, newVida)
-};
 //Seleccionar jugador Multijugador
-let versus1 = document.getElementById("vs1");
-let versus2 = document.getElementById("vs2");
-let pelea1 = document.getElementById("spaceP1");
-let pelea2 = document.getElementById("spaceP2");
-let dato1 = document.getElementById("name1");
-let dato2 = document.getElementById("name2");
-let life1 = document.getElementById("barr1");
-let life2 = document.getElementById("barr2");
-let ulti1 = 0;
-let ulti2 = 0;
-let jugador = [];
 const choose = (elegido) => {
     switch (elegido) {
         case "1":
@@ -43,8 +42,6 @@ const choose = (elegido) => {
             break;
     }
     if (jugador.length == 2) {
-        console.log(jugador)
-
         //CAMBIO A PANTALLA DE VERSUS
         setTimeout(() => {
             versus1.innerHTML = `<img src="img/${jugador[0].apodo}.gif" class="foto3" alt="PLAYER1">`;
@@ -82,7 +79,6 @@ const choose1 = (elegido) => {
     let random = `${Math.floor(Math.random() * (4 - 1) + 1)}`;
     while (random === elegido) {
         random = `${Math.floor(Math.random() * (4 - 1) + 1)}`;
-        console.log(random)
         if (random != elegido) {
 
             console.log(jugador);
@@ -127,7 +123,6 @@ let ganador = document.getElementById("ganador1");
 const ataque = (atacante) => {
     if (atacante == 1) {
         if (contador == 0) {
-            console.log("Lanzaste ataque para dejar a " + jugador[1].nombre + " a " + jugador[1].vida + " de vida.");
             contador++;
             pelea1.innerHTML = `<img src="img/${jugador[0].apodo}1.gif" class="foto3" alt="PLAYER1">`;
             //Es para la funcion de defensa, hemos incremetado el contador para que cuando termine el timepo vuelva a ser 0, asi si pulsas el
@@ -140,13 +135,19 @@ const ataque = (atacante) => {
                     contador = 0;
                 } else {
                     contador = 0;
-                }
+                };
+                if (jugador[1].vida <= 0) {
+                    ganador.innerHTML = `<img src="img/${jugador[0].apodo}.gif" class="foto3" alt="PLAYER1">`;
+                    changeLCD("winner");
+                    setTimeout(() => {
+                        changeLCD("home");
+                        jugador[0].vida = jugador[0].maxVida;
+                        jugador[1].vida = jugador[1].maxVida;
+                        jugador = [];
+                    }, 4000);
+                };
             }, 800);
-            if (jugador[1].vida <= 0) {
-                console.log("has ganado");
-                ganador.innerHTML = `<img src="img/${jugador[0].apodo}.gif" class="foto3" alt="PLAYER1">`;
-                changeLCD("winner");
-            };
+
         } else {
             console.log("No puedes atacar mientras atacas");
         };
@@ -154,7 +155,6 @@ const ataque = (atacante) => {
         if (contador2 == 0) {
             pelea2.innerHTML = `<img src="img/${jugador[1].apodo}1.gif" class="foto5" alt="PLAYER2">`;
             contador2++;
-            console.log("Lanzaste ataque para dejar a " + jugador[0].nombre + " a " + jugador[0].vida + " de vida.");
             setTimeout(() => {
                 pelea2.innerHTML = `<img src="img/${jugador[1].apodo}.gif" class="foto5" alt="PLAYER2">`;
                 if (contador2 == 1) {
@@ -163,13 +163,19 @@ const ataque = (atacante) => {
                     contador2 = 0;
                 } else {
                     contador2 = 0;
-                }
+                };
+                if (jugador[0].vida <= 0) {
+                    ganador.innerHTML = `<img src="img/${jugador[1].apodo}.gif" class="foto5" alt="PLAYER1">`;
+                    changeLCD("winner");
+                    setTimeout(() => {
+                        changeLCD("home");
+                        jugador[0].vida = jugador[0].maxVida;
+                        jugador[1].vida = jugador[1].maxVida;
+                        jugador = [];
+                    }, 4000);
+                };
             }, 800);
-            if (jugador[0].vida <= 0) {
-                console.log("Has ganado " + jugador[1].nombre);
-                ganador.innerHTML = `<img src="img/${jugador[1].apodo}.gif" class="foto5" alt="PLAYER1">`;
-                changeLCD("winner");
-            };
+
         } else {
             console.log("No puedes atacar mientras atacas");
         }
@@ -188,6 +194,9 @@ const defense = (defensor) => {
         } else {
             console.log("No pudiste esquivarlo");
         };
+        if (ulti1 >= 3) {
+            ballUlti1.innerHTML = `<div class="chargeUlti"></div>`;
+        };
     } else if (defensor == 2) {
         if (contador == 1) {
             defensaIA = 0;
@@ -201,6 +210,9 @@ const defense = (defensor) => {
         } else {
             console.log("No pudiste esquivarlo");
             defensaIA = 0;
+        };
+        if (ulti2 >= 3) {
+            ballUlti2.innerHTML = `<div class="chargeUlti"></div>`;
         };
     }
 
@@ -217,11 +229,24 @@ const ultimate = (atacante1) => {
                     contador = 0;
                     jugador[0].atackUlti(jugador[1]);
                     life2.innerHTML = `<progress id="vida2" max="${jugador[1].maxVida}" value="${jugador[1].vida}" ></progress>`;
+                    if (jugador[1].vida <= 0) {
+                        ganador.innerHTML = `<img src="img/${jugador[0].apodo}.gif" class="foto3" alt="PLAYER1">`;
+                        changeLCD("winner");
+                        setTimeout(() => {
+                            changeLCD("home");
+                            jugador[0].vida = jugador[0].maxVida;
+                            jugador[1].vida = jugador[1].maxVida;
+                            jugador = [];
+                        }, 4000);
+                    };
                 } else {
                     contador = 0;
                 };
             }, 400);
-        } else { }
+        } else { };
+        if (ulti1 < 3) {
+            ballUlti1.innerHTML = ``;
+        };
     } else if (atacante1 == 2) {
         if (ulti2 >= 3) {
             ulti2 = 0;
@@ -230,18 +255,31 @@ const ultimate = (atacante1) => {
             setTimeout(() => {
                 pelea2.innerHTML = `<img src="img/${jugador[1].apodo}.gif" class="foto5" alt="PLAYER1">`;
                 if (contador2 == 1) {
-                    contador2 = 0; 
+                    contador2 = 0;
                     jugador[1].atackUlti(jugador[0]);
                     life1.innerHTML = `<progress id="vida1" max="${jugador[0].maxVida}" value="${jugador[0].vida}" ></progress>`;
-                }else {
+                    if (jugador[0].vida <= 0) {
+                        ganador.innerHTML = `<img src="img/${jugador[1].apodo}.gif" class="foto5" alt="PLAYER1">`;
+                        changeLCD("winner");
+                        setTimeout(() => {
+                            changeLCD("home");
+                            jugador[0].vida = jugador[0].maxVida;
+                            jugador[1].vida = jugador[1].maxVida;
+                            jugador = [];
+                        }, 4000);
+                    };
+                } else {
                     contador2 = 0;
-                }
+                };
             }, 400);
         } else { };
+        if (ulti2 < 3) {
+            ballUlti2.innerHTML = ``;
+        };
+
     }
 }
 //CONTROLES POR TECLADO
-
 //Le decimos a la maquina que funcion va a ejecutar la presion de la teclas
 document.addEventListener("keydown", move);
 //"e" es la variable por defecto para meter parametros por teclado
@@ -272,4 +310,3 @@ function move(e) {
             break;
     }
 };
-console.log(ulti1);

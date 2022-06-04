@@ -25,7 +25,7 @@ body {
     align-items: center;
     height: 100vh;
     width: 200vh;
-    background-color: grey;
+    background-color: rgb(0, 0, 0);
     color: rgb(224, 224, 122);
 }
 
@@ -40,7 +40,10 @@ body {
     align-items: center;
     height: 100vh;
     width: 200vh;
-    background-color: grey;
+    background-color: rgb(0, 0, 0);
+    background-image: url("../img/fondo2.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #selectSingle {
@@ -50,7 +53,10 @@ body {
     align-items: center;
     height: 100vh;
     width: 200vh;
-    background-color: grey;
+    background-color: rgb(0, 0, 0);
+    background-image: url("../img/fondo2.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .chooseP {
@@ -70,7 +76,8 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    width: 100vh;
+    width: 200vh;
+    background-color: black;
 }
 
 #fight {
@@ -88,7 +95,7 @@ body {
     flex-direction: row;
     align-items: flex-start;
     justify-content: center;
-    background-color: brown;
+    /* background-color: brown; */
     margin-top: -8em;
     width: 100em;
     height: 20em;
@@ -97,7 +104,7 @@ body {
 .barrIzq {
     width: 45em;
     height: 10em;
-    background-color: blue;
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -107,7 +114,7 @@ body {
 .cent {
     width: 12em;
     height: 10em;
-    background-color: bisque;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -119,7 +126,7 @@ body {
 .barrDer {
     width: 45em;
     height: 10em;
-    background-color: aqua;
+  
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -153,6 +160,14 @@ body {
         background-color:rgb(111, 196, 111);
         border-radius: 2em;
 }
+.nameBarr {
+    max-width: 16em;
+    height: 3em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
 #vida2{
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -166,10 +181,29 @@ body {
     transform: rotate(180deg);
 }
 .nombre {
-    color: black;
+    background-color: rgba(0, 0, 0, 0.397);
+    color: rgb(209, 206, 49);
     font-family: 'Mortal Kombat 4', sans-serif;
-    font-size: 2em;
+    font-size: 3em;
 }
+#chargeUlti2 {
+    height: 2em;
+    width: 2em;
+    border-radius: 2em;
+}
+#chargeUlti1 {
+    height: 2em;
+    width: 2em;
+    border-radius: 2em;
+}
+.chargeUlti {
+    height: 2em;
+    width: 2em;
+    background-color: rgb(240, 240, 116);
+    border: solid rgb(255, 159, 159) 0.2em;
+    border-radius: 2em;
+}
+
 
 .fight1 {
     width: 80em;
@@ -182,7 +216,7 @@ body {
 .datos {
     width: 36em;
     height: 5em;
-    background-color: bisque;
+    /* background-color: bisque; */
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -195,7 +229,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: goldenrod;
+    /* background-color: goldenrod; */
 }
 
 .live {
@@ -203,7 +237,7 @@ body {
     width: 2em;
     border: solid black 0.2em;
     border-radius: 2em;
-    background-color: brown;
+    /* background-color: brown; */
 }
 
 .centro {
@@ -216,7 +250,14 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    width: 100vh;
+    width: 200vh;
+    background-color: black;
+}
+#winner1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .start {
@@ -231,6 +272,12 @@ body {
     border: double rgb(224, 224, 122) 0.1em;
     border-radius: 3em;
 
+}
+#name1{
+    margin-right: 2em;
+}
+#name2 {
+    margin-left: 2em;
 }
 
 .select2 {
