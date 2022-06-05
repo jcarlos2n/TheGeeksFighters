@@ -21,7 +21,7 @@ const changeLCD = (nextLcd) => {
     let fin = document.getElementById(nextLcd);
     fin.style.display = "flex";
 
-    let arrayLCD = ["home", "select", "selectSingle", "versus", "fight", "winner"];
+    let arrayLCD = ["intro","home", "select", "selectSingle","controller", "versus", "fight", "winner"];
 
     for (let i of arrayLCD) {
         if (i != nextLcd) {
@@ -29,6 +29,13 @@ const changeLCD = (nextLcd) => {
         }
     }
 };
+const change = () =>{
+    setTimeout(() => {
+        changeLCD("home")
+    }, 6000);
+}
+window.onload = change();
+
 //Seleccionar jugador Multijugador
 const choose = (elegido) => {
     switch (elegido) {
@@ -48,22 +55,26 @@ const choose = (elegido) => {
     if (jugador.length == 2) {
         //CAMBIO A PANTALLA DE VERSUS
         setTimeout(() => {
-            versus1.innerHTML = `<img src="img/${jugador[0].apodo}.gif" class="foto3" alt="PLAYER1">`;
-            date1.innerHTML = `<p class="dates">Name:<br>${jugador[0].nombre}</p><p class="dates">Life:<br>${jugador[0].vida}</p><p class="dates">Damage:<br>${jugador[0].ataque}</p><p class="dates">UltiDamage:<br>${jugador[0].ulti}</p>`;
-            versus2.innerHTML = `<img src="img/${jugador[1].apodo}.gif" class="foto5" alt="PLAYER2">`;
-            date2.innerHTML = `<p class="dates">Name:<br>${jugador[1].nombre}</p><p class="dates">Life:<br>${jugador[1].vida}</p><p class="dates">Damage:<br>${jugador[1].ataque}</p><p class="dates">UltiDamage:<br>${jugador[1].ulti}</p>`;
-            changeLCD("versus");
-            //CAMBIO DE PANTALLA A PELEA
+            changeLCD("controller");
             setTimeout(() => {
-                pelea1.innerHTML = `<img src="img/${jugador[0].apodo}.gif" class="foto3" alt="PLAYER1">`;
-                dato1.innerHTML = `<p class="nombre">${jugador[0].nombre}</p>`;
-                life1.innerHTML = `<progress id="vida1" max="${jugador[0].maxVida}" value="${jugador[0].vida}" ></progress>`;
-                pelea2.innerHTML = `<img src="img/${jugador[1].apodo}.gif" class="foto5" alt="PLAYER2">`;
-                dato2.innerHTML = `<p class="nombre">${jugador[1].nombre}</p>`;
-                life2.innerHTML = `<progress id="vida2" max="${jugador[1].maxVida}" value="${jugador[1].vida}" ></progress>`;
-                changeLCD("fight");
-            }, 7000);
+                versus1.innerHTML = `<img src="img/${jugador[0].apodo}.gif" class="foto3" alt="PLAYER1">`;
+                date1.innerHTML = `<p class="dates">Name:<br>${jugador[0].nombre}</p><p class="dates">Life:<br>${jugador[0].vida}</p><p class="dates">Damage:<br>${jugador[0].ataque}</p><p class="dates">UltiDamage:<br>${jugador[0].ulti}</p>`;
+                versus2.innerHTML = `<img src="img/${jugador[1].apodo}.gif" class="foto5" alt="PLAYER2">`;
+                date2.innerHTML = `<p class="dates">Name:<br>${jugador[1].nombre}</p><p class="dates">Life:<br>${jugador[1].vida}</p><p class="dates">Damage:<br>${jugador[1].ataque}</p><p class="dates">UltiDamage:<br>${jugador[1].ulti}</p>`;
+                changeLCD("versus");
+                //CAMBIO DE PANTALLA A PELEA
+                setTimeout(() => {
+                    pelea1.innerHTML = `<img src="img/${jugador[0].apodo}.gif" class="foto3" alt="PLAYER1">`;
+                    dato1.innerHTML = `<p class="nombre">${jugador[0].nombre}</p>`;
+                    life1.innerHTML = `<progress id="vida1" max="${jugador[0].maxVida}" value="${jugador[0].vida}" ></progress>`;
+                    pelea2.innerHTML = `<img src="img/${jugador[1].apodo}.gif" class="foto5" alt="PLAYER2">`;
+                    dato2.innerHTML = `<p class="nombre">${jugador[1].nombre}</p>`;
+                    life2.innerHTML = `<progress id="vida2" max="${jugador[1].maxVida}" value="${jugador[1].vida}" ></progress>`;
+                    changeLCD("fight");
+                }, 7000);
+            }, 10000);
         }, 1000);
+        
     };
 };
 //SELECCIONAR JUGADOR SINGLE PLAYER
@@ -95,39 +106,43 @@ const choose1 = (elegido) => {
             console.log(jugador);
             //CAMBIO A PANTALLA DE VERSUS
             setTimeout(() => {
-                versus1.innerHTML = `<img src="img/${jugador[0].apodo}.gif" class="foto3" alt="PLAYER1">`;
-                date1.innerHTML = `<p class="dates">Name:<br>${jugador[0].nombre}</p><p class="dates">Life:<br>${jugador[0].vida}</p><p class="dates">Damage:<br>${jugador[0].ataque}</p><p class="dates">UltiDamage:<br>${jugador[0].ulti}</p>`;
-                versus2.innerHTML = `<img src="img/${jugador[1].apodo}.gif" class="foto5" alt="PLAYER2">`;
-                date2.innerHTML = `<p class="dates">Name:<br>${jugador[1].nombre}</p><p class="dates">Life:<br>${jugador[1].vida}</p><p class="dates">Damage:<br>${jugador[1].ataque}</p><p class="dates">UltiDamage:<br>${jugador[1].ulti}</p>`;
-                changeLCD("versus");
-                //CAMBIO DE PANTALLA A PELEA
+                changeLCD("controller");
                 setTimeout(() => {
-                    pelea1.innerHTML = `<img src="img/${jugador[0].apodo}.gif" class="foto3" alt="PLAYER1">`;
-                    dato1.innerHTML = `<p class="nombre">${jugador[0].nombre}</p>`;
-                    life1.innerHTML = `<progress id="vida1" max="${jugador[0].maxVida}" value="${jugador[0].vida}" ></progress>`;
-                    dato2.innerHTML = `<p class="nombre">${jugador[1].nombre}</p>`;
-                    pelea2.innerHTML = `<img src="img/${jugador[1].apodo}.gif" class="foto5" alt="PLAYER2">`;
-                    life2.innerHTML = `<progress id="vida2" max="${jugador[1].maxVida}" value="${jugador[1].vida}" ></progress>`;
-                    changeLCD("fight");
-                    let a = setInterval(() => {
-                        let randomA = Math.floor(Math.random() * (4 - 1) + 1);
-                        let randomB = Math.floor(Math.random() * (2 - 1) + 1);
-                        if (randomA == 1 || randomA == 3) {
-                            ataque(2);
-                        };
-                        if ((contador == 1 && randomA == 2) || (contador == 1 && randomB == 2)) {
-                            defense(2);
-                        };
-                        if (randomB == 1 && ulti2 >= 3) {
-                            ultimate(2)
-                        };
-                        if (jugador[0].vida <= 0 || jugador[1].vida <= 0) {
-                            clearInterval(a);
-                        };
-                        console.log(randomA);
-                    }, 1000);
-                }, 7000);
+                    versus1.innerHTML = `<img src="img/${jugador[0].apodo}.gif" class="foto3" alt="PLAYER1">`;
+                    date1.innerHTML = `<p class="dates">Name:<br>${jugador[0].nombre}</p><p class="dates">Life:<br>${jugador[0].vida}</p><p class="dates">Damage:<br>${jugador[0].ataque}</p><p class="dates">UltiDamage:<br>${jugador[0].ulti}</p>`;
+                    versus2.innerHTML = `<img src="img/${jugador[1].apodo}.gif" class="foto5" alt="PLAYER2">`;
+                    date2.innerHTML = `<p class="dates">Name:<br>${jugador[1].nombre}</p><p class="dates">Life:<br>${jugador[1].vida}</p><p class="dates">Damage:<br>${jugador[1].ataque}</p><p class="dates">UltiDamage:<br>${jugador[1].ulti}</p>`;
+                    changeLCD("versus");
+                    //CAMBIO DE PANTALLA A PELEA
+                    setTimeout(() => {
+                        pelea1.innerHTML = `<img src="img/${jugador[0].apodo}.gif" class="foto3" alt="PLAYER1">`;
+                        dato1.innerHTML = `<p class="nombre">${jugador[0].nombre}</p>`;
+                        life1.innerHTML = `<progress id="vida1" max="${jugador[0].maxVida}" value="${jugador[0].vida}" ></progress>`;
+                        dato2.innerHTML = `<p class="nombre">${jugador[1].nombre}</p>`;
+                        pelea2.innerHTML = `<img src="img/${jugador[1].apodo}.gif" class="foto5" alt="PLAYER2">`;
+                        life2.innerHTML = `<progress id="vida2" max="${jugador[1].maxVida}" value="${jugador[1].vida}" ></progress>`;
+                        changeLCD("fight");
+                        let a = setInterval(() => {
+                            let randomA = Math.floor(Math.random() * (4 - 1) + 1);
+                            let randomB = Math.floor(Math.random() * (2 - 1) + 1);
+                            if (randomA == 1 || randomA == 3) {
+                                ataque(2);
+                            };
+                            if ((contador == 1 && randomA == 2) || (contador == 1 && randomB == 2)) {
+                                defense(2);
+                            };
+                            if (randomB == 1 && ulti2 >= 3) {
+                                ultimate(2)
+                            };
+                            if (jugador[0].vida <= 0 || jugador[1].vida <= 0) {
+                                clearInterval(a);
+                            };
+                            console.log(randomA);
+                        }, 1000);
+                    }, 7000);
+                }, 10000);
             }, 1000);
+            
         };
     };
 };
