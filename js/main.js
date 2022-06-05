@@ -32,7 +32,7 @@ const changeLCD = (nextLcd) => {
 const change = () =>{
     setTimeout(() => {
         changeLCD("home")
-    }, 6000);
+    }, 5000);
 }
 window.onload = change();
 
@@ -72,7 +72,7 @@ const choose = (elegido) => {
                     life2.innerHTML = `<progress id="vida2" max="${jugador[1].maxVida}" value="${jugador[1].vida}" ></progress>`;
                     changeLCD("fight");
                 }, 7000);
-            }, 10000);
+            }, 8000);
         }, 1000);
         
     };
@@ -140,7 +140,7 @@ const choose1 = (elegido) => {
                             console.log(randomA);
                         }, 1000);
                     }, 7000);
-                }, 10000);
+                }, 8000);
             }, 1000);
             
         };
@@ -172,6 +172,8 @@ const ataque = (atacante) => {
                         jugador[0].vida = jugador[0].maxVida;
                         jugador[1].vida = jugador[1].maxVida;
                         jugador = [];
+                        contador = 0;
+                        contador2 = 0;
                     }, 4000);
                 };
             }, 800);
@@ -200,6 +202,8 @@ const ataque = (atacante) => {
                         jugador[0].vida = jugador[0].maxVida;
                         jugador[1].vida = jugador[1].maxVida;
                         jugador = [];
+                        contador = 0;
+                        contador2 = 0;
                     }, 4000);
                 };
             }, 800);
@@ -264,6 +268,8 @@ const ultimate = (atacante1) => {
                             jugador[0].vida = jugador[0].maxVida;
                             jugador[1].vida = jugador[1].maxVida;
                             jugador = [];
+                            contador = 0;
+                            contador2 = 0;
                         }, 4000);
                     };
                 } else {
@@ -293,6 +299,8 @@ const ultimate = (atacante1) => {
                             jugador[0].vida = jugador[0].maxVida;
                             jugador[1].vida = jugador[1].maxVida;
                             jugador = [];
+                            contador = 0;
+                            contador2 = 0;
                         }, 4000);
                     };
                 } else {
