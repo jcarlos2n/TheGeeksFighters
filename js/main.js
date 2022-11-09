@@ -37,6 +37,7 @@ const change = () =>{
 window.onload = change();
 
 //Seleccionar jugador Multijugador
+console.log(players)
 const choose = (elegido) => {
     switch (elegido) {
         case "1":
